@@ -15,7 +15,7 @@ const BottomNavigation = () => {
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50">
+    <nav className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-lg border-t border-red-100 z-50 shadow-lg">
       <div className="flex justify-around items-center py-2">
         {navItems.map(({ path, icon: Icon, label }) => {
           const isActive = location.pathname === path;
@@ -23,14 +23,14 @@ const BottomNavigation = () => {
             <Link
               key={path}
               to={path}
-              className={`flex flex-col items-center py-2 px-3 rounded-lg transition-colors ${
+              className={`flex flex-col items-center py-3 px-4 rounded-xl transition-all duration-300 ${
                 isActive 
-                  ? 'text-blue-600 bg-blue-50' 
-                  : 'text-gray-500 hover:text-gray-700'
+                  ? 'text-white bg-gradient-to-r from-red-500 to-red-600 shadow-lg transform scale-105' 
+                  : 'text-gray-500 hover:text-red-500 hover:bg-red-50'
               }`}
             >
-              <Icon size={24} />
-              <span className="text-xs mt-1 font-medium">{label}</span>
+              <Icon size={22} className={isActive ? 'drop-shadow-sm' : ''} />
+              <span className={`text-xs mt-1 font-medium ${isActive ? 'font-semibold' : ''}`}>{label}</span>
             </Link>
           );
         })}
