@@ -1,73 +1,42 @@
-# Welcome to your Lovable project
+# 🏋️‍♂️ Mobi – Smart Strength Training for Seniors
 
-## Project info
+**Mobi** is a smart, low-cost, machine learning–powered solution designed to bring safe, accessible strength training to seniors through real-time exercise tracking and fatigue monitoring. Built for Active Ageing Centres (AACs) and public fitness corners, Mobi enables seniors to train safely while families and caregivers stay connected through shared dashboards.
 
-**URL**: https://lovable.dev/projects/b1eb24c5-bf32-4304-ad51-e7451a1b174c
+---
 
-## How can I edit this code?
+## 🚀 Features
 
-There are several ways of editing your application.
+- 📊 **Real-time Repetition Detection** using IMU (gyro-based) motion data  
+- ❤️ **Fatigue Scoring** via heart rate and gyroscope integration  
+- 🧠 **Edge ML** inference for low-latency, on-device decision-making  
+- 👨‍👩‍👧‍👦 **Caregiver & Family Dashboards** for remote monitoring  
+- 🧓 **Gamified Engagement** via leaderboard and "Jio Me" social challenges  
+- 🏃‍♂️ **Exercise Corner Compatibility** for decentralized, scalable deployment
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/b1eb24c5-bf32-4304-ad51-e7451a1b174c) and start prompting.
+## 📦 Tech Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+- **MCU**: Seeed Studio XIAO ESP32S3  
+- **Sensor Modules**: Grove 9DoF IMU, MAX30102 heart rate sensor  
+- **ML Model**: Edge Impulse motion classification  
+- **Frontend**: React.js MVP (see `/app`)  
+- **Cloud**: Firebase / Supabase (optional for data sync)
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## ⚠️ Disclaimer
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+> **Mobi was created as part of the UTC2738 Steer Shenzhen 2025 program: “Pitches to Prototypes.”**  
+> This repository contains an early-stage MVP, built in **under 2 days**, showcasing **rapid prototyping** and **agile development practices**.  
+> It is **not production-ready**, but demonstrates the system architecture and core logic behind real-time repetition and fatigue monitoring for seniors.
 
-Follow these steps:
+---
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 📚 Getting Started
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+1. **Clone the repo**  
+   ```bash
+   git clone https://github.com/your-username/mobi-fitness-app.git
+   cd mobi-fitness-app
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/b1eb24c5-bf32-4304-ad51-e7451a1b174c) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
