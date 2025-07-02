@@ -2,6 +2,9 @@
 
 **Mobi** is a smart, low-cost, machine learning–powered solution designed to bring safe, accessible strength training to seniors through real-time exercise tracking and fatigue monitoring. Built for Active Ageing Centres (AACs) and public fitness corners, Mobi enables seniors to train safely while families and caregivers stay connected through shared dashboards.
 
+[![Try Mobi App](https://img.shields.io/badge/Live%20Demo-Mobi%20App-blue?style=for-the-badge)](https://mobi-app.lovable.app)
+
+
 ---
 
 ## 🚀 Features
