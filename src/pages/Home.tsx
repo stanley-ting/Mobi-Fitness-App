@@ -1,13 +1,12 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { QrCode, Clock, Activity, CheckCircle, Circle, Timer, Sparkles } from 'lucide-react';
 
 const Home = () => {
   const todayProgress = [
-    { exercise: 'Chair Exercises', sets: 3, completedSets: 2, repsPerSet: 8, completedReps: 8 },
-    { exercise: 'Tai Chi Movement', sets: 3, completedSets: 1, repsPerSet: 10, completedReps: 4 },
-    { exercise: 'Balance Training', sets: 2, completedSets: 0, repsPerSet: 8, completedReps: 0 },
+    { exercise: 'Seated Chest Press', sets: 3, completedSets: 2, repsPerSet: 8, completedReps: 8 },
+    { exercise: 'Seated Shoulder Press', sets: 3, completedSets: 1, repsPerSet: 10, completedReps: 4 },
+    { exercise: 'Leg Press', sets: 2, completedSets: 0, repsPerSet: 8, completedReps: 0 },
   ];
 
   const totalSets = todayProgress.reduce((acc, ex) => acc + ex.sets, 0);
@@ -28,6 +27,14 @@ const Home = () => {
           <div className="bg-white/20 backdrop-blur-sm rounded-full p-3">
             <Sparkles size={32} className="text-yellow-300" />
           </div>
+        </div>
+
+        {/* Mobi Brand & Tagline */}
+        <div className="text-center mb-6 bg-white/10 backdrop-blur-sm rounded-2xl p-4">
+          <h2 className="text-2xl font-bold text-white mb-2">Mobi</h2>
+          <p className="text-red-100 text-sm font-medium italic">
+            "Confidence with Every Rep, Fitness that Brings Us Together"
+          </p>
         </div>
 
         {/* Scan Machine Button */}
