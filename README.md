@@ -21,7 +21,7 @@
 - **Sensor Modules**: Grove 9DoF IMU, MAX30102 heart rate sensor  
 - **ML Model**: Edge Impulse motion classification  
 - **Frontend**: React.js MVP (see `/app`)  
-- **Cloud**: Firebase / Supabase (optional for data sync)
+- **Cloud**: Supabase 
 
 ---
 
@@ -39,4 +39,5 @@
    ```bash
    git clone https://github.com/your-username/mobi-fitness-app.git
    cd mobi-fitness-app
+   
 
