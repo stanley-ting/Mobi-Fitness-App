@@ -15,10 +15,11 @@ const ExerciseGuidance = () => {
   ];
 
   const attachmentSteps = [
-    "Locate the sensor mounting point on the activity station",
-    "Gently attach the wellness sensor to the designated area", 
-    "Check that the green indicator light is visible",
-    "Ensure the sensor stays secure during your activity"
+    "Locate the right handle of the activity station",
+    "Attach the Mobi sensor securely to the right handle grip area", 
+    "Ensure the sensor's green indicator light is visible and blinking",
+    "Test the grip to confirm the sensor stays firmly attached during movement",
+    "Check that the sensor doesn't interfere with your natural grip"
   ];
 
   return (
@@ -85,14 +86,14 @@ const ExerciseGuidance = () => {
           </div>
         </div>
 
-        {/* Device Attachment Guide */}
+        {/* Mobi Sensor Attachment Guide */}
         <div className="bg-white rounded-3xl p-6 shadow-lg border border-green-100 card-hover">
           <div className="flex items-center mb-6">
             <div className="bg-green-100 rounded-xl p-3 mr-4">
               <Settings size={24} className="text-green-600" />
             </div>
             <div>
-              <h3 className="text-xl font-bold text-gray-800">Wellness Sensor Setup</h3>
+              <h3 className="text-xl font-bold text-gray-800">Mobi Sensor Attachment</h3>
               <p className="text-gray-500 text-sm">Attach your health monitoring device</p>
             </div>
           </div>

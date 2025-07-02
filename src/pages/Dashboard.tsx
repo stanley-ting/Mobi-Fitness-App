@@ -1,6 +1,8 @@
 
 import React, { useState } from 'react';
 import { RefreshCw, Activity, Heart, Zap, Clock, Brain } from 'lucide-react';
+import { LineChart, Line, XAxis, YAxis, ResponsiveContainer } from 'recharts';
+import ExerciseCalendar from '../components/ExerciseCalendar';
 
 const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -13,6 +15,27 @@ const Dashboard = () => {
     heartRate: { avg: 125, max: 142, min: 88 },
     fatigueScore: 72
   });
+
+  // Mock data for charts
+  const heartRateData = [
+    { time: '9AM', value: 88 },
+    { time: '10AM', value: 125 },
+    { time: '11AM', value: 142 },
+    { time: '12PM', value: 118 },
+    { time: '1PM', value: 95 },
+    { time: '2PM', value: 102 },
+    { time: '3PM', value: 89 }
+  ];
+
+  const fatigueData = [
+    { day: 'Mon', score: 65 },
+    { day: 'Tue', score: 70 },
+    { day: 'Wed', score: 68 },
+    { day: 'Thu', score: 72 },
+    { day: 'Fri', score: 75 },
+    { day: 'Sat', score: 78 },
+    { day: 'Sun', score: 72 }
+  ];
 
   const handleSync = () => {
     setIsLoading(true);
@@ -60,14 +83,17 @@ const Dashboard = () => {
         <button
           onClick={handleSync}
           disabled={isLoading}
-          className={`p-3 rounded-full ${isLoading ? 'bg-gray-200' : 'bg-blue-100 hover:bg-blue-200'} transition-colors`}
+          className={`p-3 rounded-full ${isLoading ? 'bg-gray-200' : 'bg-red-100 hover:bg-red-200'} transition-colors`}
         >
           <RefreshCw 
             size={24} 
-            className={`text-blue-600 ${isLoading ? 'animate-spin' : ''}`} 
+            className={`text-red-600 ${isLoading ? 'animate-spin' : ''}`} 
           />
         </button>
       </div>
+
+      {/* Exercise Calendar */}
+      <ExerciseCalendar />
 
       {/* Metrics Cards */}
       <div className="grid grid-cols-2 gap-4">
@@ -116,21 +142,55 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Fatigue Score */}
+      {/* Heart Rate Chart */}
+      <div className="bg-white rounded-2xl p-6 shadow-sm border border-red-100">
+        <div className="flex items-center mb-4">
+          <Heart size={24} className="text-red-600 mr-3" />
+          <h3 className="text-lg font-semibold text-gray-800">Heart Rate Trend</h3>
+        </div>
+        <div className="h-48">
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart data={heartRateData}>
+              <XAxis dataKey="time" axisLine={false} tickLine={false} />
+              <YAxis hide />
+              <Line 
+                type="monotone" 
+                dataKey="value" 
+                stroke="#ef4444" 
+                strokeWidth={3}
+                dot={{ fill: '#ef4444', strokeWidth: 2, r: 4 }}
+                activeDot={{ r: 6, stroke: '#ef4444', strokeWidth: 2 }}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
+
+      {/* Fatigue Score Chart */}
       <div className="bg-orange-50 rounded-2xl p-6">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center">
             <Brain size={24} className="text-orange-600 mr-3" />
-            <span className="text-lg font-semibold text-gray-800">Fatigue Score</span>
+            <span className="text-lg font-semibold text-gray-800">Weekly Fatigue Score</span>
           </div>
           <span className="text-2xl font-bold text-orange-600">{metrics.fatigueScore}/100</span>
         </div>
         
-        <div className="w-full bg-orange-100 rounded-full h-4 mb-2">
-          <div 
-            className="bg-gradient-to-r from-orange-400 to-yellow-400 h-4 rounded-full transition-all duration-1000"
-            style={{ width: `${metrics.fatigueScore}%` }}
-          ></div>
+        <div className="h-32 mb-4">
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart data={fatigueData}>
+              <XAxis dataKey="day" axisLine={false} tickLine={false} />
+              <YAxis hide />
+              <Line 
+                type="monotone" 
+                dataKey="score" 
+                stroke="#f97316" 
+                strokeWidth={3}
+                dot={{ fill: '#f97316', strokeWidth: 2, r: 4 }}
+                activeDot={{ r: 6, stroke: '#f97316', strokeWidth: 2 }}
+              />
+            </LineChart>
+          </ResponsiveContainer>
         </div>
         
         <p className="text-sm text-gray-600">
