@@ -9,19 +9,19 @@
 #include <U8g2lib.h>
 
 // Wi-Fi credentials
-#define WIFI_SSID "kalai"
-#define WIFI_PASSWORD "joeldat1"
+#define WIFI_SSID "enter_your_wifi_ssid"
+#define WIFI_PASSWORD "enter_your_wifi_password"
 U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, /* reset=*/U8X8_PIN_NONE);
 
 // Google Sheets configuration
-#define PROJECT_ID "iot-datalogging-461802"
-#define CLIENT_EMAIL "iot-datalogging@iot-datalogging-461802.iam.gserviceaccount.com"
-const char PRIVATE_KEY[] PROGMEM = "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDQ/iddSWp33HLW\n6sW+xRZ2rTpqdq+bz/DcZDO9HP4uulwo3tPxDXgDDS4VApntg2Vnz5CV5hm3Vj5+\nMlg6A/exRp0qwWqGKbqMimfkkT44I1OJeU3l6NoQAdLjvfJc+rEwgcroHphilmGZ\nKg8Z4cONQ4H28EQLZpQ9VtuYm6XCry//KDG+lm1giK0NFQhliU5WGiH/WsH4m1sD\nFlQFfFFIYJRP3cYEhWmwCzGgZ5IWgstgi+IqdBjn6ey4xJm+BDk91FlTiYbkSonj\npnj1e+eRAmXkf6bWK77FvdhbSvs1AdLOYlZCqX6u6IZFW+SHa1r1wtM8uHfFNMhB\nSngGG2adAgMBAAECggEAMTdg+smCvqZWDwGrvtC4CQujYZYApe9St/wK6SKuQz/U\n2zUacT5sQD+21fDOYg4a79cEJCDTdobjYaGmgEcV6hQIiByTYvPpwBYKAFwp7Ft5\nXTsJWra6v6FGUiaVsErDNnqiV4Z4+WKTqleqxbwSaq52qToMtCiciVNulGI3J4Dg\nE2d04vrnV6H/Thx01RtKZjwuqFfckNnBomnOcJUVgLRxQyosaFefFmcu1r9DYLvk\nI7oKbqCZ/albz6MvO43BQbVvpHrVvP6G4y2Kpc6fS18gQaSntdVRzSMuQpM/9lnD\n55DnnFCVvJpumcA87ZICq23qfX+GcW2S00Hf5Nt+MQKBgQDsSryLq5/Tr2x7p8CL\nS+B6a5CkhZBGGwe7d5OveBiR7EuaVSvV1ZX/RYdf0dzsCK0dag177Xa5pwO6infX\nCPyj/ncj8HstvLT1yo0sHj2TKP+myBBquRxKDKq1jjeD8+uEnEgC8dPt7lRMLZfA\nD9bcZVHbxSnUq0PvGnsgDkd7lQKBgQDibIfXoTHLiTqIOn9PSPsiRAyOcbIvWmYk\nH9faqXJXyKnMWInrkEK8HctQqMdn5KkacRqh6IKVKoiixoWCA0OIWfvG+ZpKqQCT\nqdL7MT3dE9CgOrdRPNU1GmSID/BzDlWjyfiRP8M+cWex6Hp97PHJIAcbntVsBzSH\nS835AIE86QKBgGhjqCJoQubJNDr45GZlshlDVhZo71EZdfQLItK9UtV8t/XJtOD2\nSBsLg4AAfgJE3v4EsUpToUTplQsfS0xTqxFkRQw6nKCbIrMHthCMl5Vg4nizIBWW\nC/pm2C/3UW1ZIG5ogKPUZFVUGifBaK4wETMzC9P0qcNLmmqSn1yNEmV1AoGAEdEi\ne1hG19JLlc6sl+uRP2gFaOwPbmR5pxwOWzl8MuYqXlcVO0EVz0G07vro/gbjO55s\nzxLBu8UmDVD7zng9Ryx1gHnBp2BXGEeDv5pnWM8nWoRkSnMz/8K86GwAqr0VBhdt\nhNh0n6RC2aAGi4Qqnn3zsTu1b6Y9fuv7ID3m7YkCgYAAqoM113DeKIzp74/FT9TG\nnIsrwRUh2nODceyZKxDZ6xdRbpKOWDEYXXgH9fe3JffnOrEncpoOszVFYyEG2mwQ\ngE7Y/yDe3mgUBz+TM4luo0u5Tnk5icQoE6MehdQo0A2VxAIGe/KKQp8lxTmb3AMf\nmMXqDX0wOvwPfP/v9W29+g==\n-----END PRIVATE KEY-----\n";
-const char spreadsheetId[] = "1DlwzTMuSuXTBrF_J-1WXtYfN7XLgRgGpto3rYzhW30o";  
+#define PROJECT_ID "example-project-id" // Replace with your Google Cloud project ID
+#define CLIENT_EMAIL "enter_your_service_account_email" // Replace with your service account email
+const char PRIVATE_KEY[] PROGMEM = "-----BEGIN PRIVATE KEY-----\n"
+const char spreadsheetId[] = "enter_your_spreadsheet_id"; // Replace with your Google Sheets ID
 
 // BLE configuration
-#define SERVICE_UUID        "4fafc201-1fb5-459e-8fcc-c5c9c331914b"
-#define CHARACTERISTIC_UUID "beb5483e-36e1-4688-b7f5-ea07361b26a8"
+#define SERVICE_UUID        "endpoint-uuid-1234-5678-90ab-cdef12345678" // Replace with your BLE service UUID
+#define CHARACTERISTIC_UUID "endpoint-characteristic-uuid-1234-5678-90ab-cdef12345678" // Replace with your BLE characteristic UUID
 static BLEAddress *pServerAddress = nullptr;
 static boolean doConnect = false;
 static boolean connected = false;
@@ -56,11 +56,20 @@ bool gsheetReady = false;
 unsigned long gsheetStartTime = 0;
 const unsigned long GSHEET_TIMEOUT = 30000; // 30 seconds timeout
 
-// Fatigue calculation variables
+// Heart Rate variables
+float currentHeartRate = 0.0;
 float meanHR = 70.0;
 float imuFatigue = 0;
 const float alpha = 0.1;
 const float baselineHR = 70.0;
+
+// Heart Rate calculation variables
+const byte RATE_ARRAY_SIZE = 4; // Increase for more averaging
+long rateArray[RATE_ARRAY_SIZE]; // Array of heart rates
+byte ratePointer = 0;
+long lastBeat = 0;
+int beatsPerMinute = 0;
+bool fingerDetected = false;
 
 int collecting = 0;
 int reps = 0;
@@ -68,17 +77,38 @@ int inRest = 1;
 int fatigueState = 0;
 int setCount = 0;
 
-// Heart rate simulation
+// Read heart rate from MAX30102 sensor
 float getHeartRate() {
-    static float currHR = 70.0; 
-    float randomValue = (float)rand() / RAND_MAX;
-    if (randomValue >= 0.3) {
-        currHR += 2.0;
+    long irValue = particleSensor.getIR();
+    
+    if (checkForBeat(irValue)) {
+        fingerDetected = true;
+        
+        // Calculate time between beats
+        long delta = millis() - lastBeat;
+        lastBeat = millis();
+
+        // Store valid heart rate in array
+        if (delta > 300 && delta < 3000) { // Valid heart rate range (20-200 BPM)
+            rateArray[ratePointer++] = (60000 / delta); // Convert to BPM
+            ratePointer %= RATE_ARRAY_SIZE;
+
+            // Calculate average of readings
+            long total = 0;
+            for (byte i = 0; i < RATE_ARRAY_SIZE; i++) {
+                total += rateArray[i];
+            }
+            beatsPerMinute = total / RATE_ARRAY_SIZE;
+            
+            currentHeartRate = (float)beatsPerMinute;
+        }
     } else {
-        currHR -= 1.0;
+        // No finger detected or invalid reading
+        fingerDetected = (irValue > 50000); // Threshold for finger detection
     }
-    currHR = constrain(currHR, 40.0, 180.0);
-    return currHR;
+    
+    // Return current heart rate or baseline if no valid reading
+    return fingerDetected && currentHeartRate > 30 ? currentHeartRate : baselineHR;
 }
 
 // Data storage for sessions
@@ -102,7 +132,6 @@ float updateMeanHR(float newValue, float prevEMA, float alpha) {
 // Fatigue score calculations
 float HRFatigueScore() {
   return (meanHR/(220- 75)) * 70;
-  //return constrain((meanHR / baselineHR) * 50.0f, 0.0f, 30.0f);
 }
 
 // Display function
@@ -139,6 +168,13 @@ void display() {
             u8g2.setCursor(0, 30);
             u8g2.print("! You can begin !");
         }
+       
+        u8g2.setCursor(0, 60);
+        u8g2.print("HR: ");
+        u8g2.print((int)currentHeartRate);
+        if (!fingerDetected) {
+            u8g2.print(" --");
+        }
     } else {
         u8g2.setCursor(0, 12);
         u8g2.print("Reps:");
@@ -151,8 +187,16 @@ void display() {
         u8g2.print(currentFatigue, 1);
         
         u8g2.setCursor(0, 48);
-        u8g2.print("Set:");
+        u8g2.print("HR:");
+        u8g2.setCursor(35, 48);
+        u8g2.print((int)currentHeartRate);
+        if (!fingerDetected) {
+            u8g2.print(" --");
+        }
+
         u8g2.setCursor(70, 48);
+        u8g2.print("Set:");
+        u8g2.setCursor(105, 48);
         u8g2.print(setCount);
 
         if (currentFatigue > 85 && showWarning) {
@@ -320,6 +364,22 @@ void setup() {
   u8g2.drawStr(0, 20, "Starting...");
   u8g2.sendBuffer();
   
+  // Initialize MAX30102 sensor
+  if (!particleSensor.begin()) {
+    Serial.println("MAX30102 was not found. Please check wiring/power.");
+    u8g2.clearBuffer();
+    u8g2.drawStr(0, 20, "HR Sensor Error!");
+    u8g2.sendBuffer();
+    while(1);
+  }
+  
+  // Configure MAX30102 sensor
+  particleSensor.setup(); // Configure sensor with default settings
+  particleSensor.setPulseAmplitudeRed(0x0A); // Turn Red LED to low to indicate sensor is running
+  particleSensor.setPulseAmplitudeGreen(0); // Turn off Green LED
+  
+  Serial.println("MAX30102 Heart Rate Sensor initialized");
+  
   // Initialize BLE scanning
   Serial.println("Starting BLE scanning...");
   BLEDevice::init("ESP32_BLE_Client");
@@ -331,13 +391,19 @@ void setup() {
 
 void loop() {
   static unsigned long lastHRUpdate = 0;
-  const unsigned long hrUpdateInterval = 1000; // Update HR every second
+  const unsigned long hrUpdateInterval = 100; // Update HR every 100ms for responsiveness
   
   display();
 
-  // Update heart rate during workout sessions
-  if (connected && collecting && (millis() - lastHRUpdate >= hrUpdateInterval)) {
-    meanHR = updateMeanHR(getHeartRate(), meanHR, alpha);
+  // Update heart rate continuously
+  if (millis() - lastHRUpdate >= hrUpdateInterval) {
+    currentHeartRate = getHeartRate();
+    
+    // Update mean heart rate during workout sessions
+    if (connected && collecting) {
+      meanHR = updateMeanHR(currentHeartRate, meanHR, alpha);
+    }
+    
     lastHRUpdate = millis();
   }
 
@@ -428,5 +494,5 @@ void loop() {
       break;
   }
 
-  delay(100);
+  delay(50); 
 }
